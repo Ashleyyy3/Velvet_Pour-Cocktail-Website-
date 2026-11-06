@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Velvet Pour — a dark, luxury cocktail experience with interactive recipes, ingredient matching and guided mixing."
+    />
+    <meta name="theme-color" content="#0b0b0d" />
+    <title>Velvet Pour — The Art of a Better Cocktail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="topbar">
+        <p>INTERACTIVE COCKTAIL RECIPES · LUXURY NIGHT EDITION · VANILLA JS ONLY</p>
+      </div>
+
+      <header class="site-header">
+        <a class="brand" href="#home" aria-label="Velvet Pour home">
+          <span class="brand-mark">VP</span>
+          <span class="brand-text">
+            <strong>VELVET POUR</strong>
+            <small>THE COCKTAIL ATELIER</small>
+          </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#discover">Discover</a>
+          <a href="#mybar">My Bar</a>
+          <a href="#favorites">Saved</a>
+        </nav>
+
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+        <a href="#home">Home</a>
+        <a href="#discover">Discover</a>
+        <a href="#mybar">My Bar</a>
+        <a href="#favorites">Saved recipes</a>
+      </nav>
+
+      <main>
+        <section id="home" class="hero section">
+          <div class="hero-media reveal">
+            <img src="assets/images/hero-banner.png" alt="Martini glass with olives splashing dramatically on a dark background" />
+          </div>
+
+          <div class="hero-copy reveal delay-1">
+            <p class="eyebrow">AN INTERACTIVE EDITORIAL COCKTAIL EXPERIENCE</p>
+            <h1>
+              Mix cocktails with
+              <span>style, clarity</span>
+              and a little drama.
+            </h1>
+            <p class="hero-text">
+              Discover elegant classics, explore what you can make from the ingredients you already have,
+              and follow each recipe step by step in a guided mixing studio.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-solid" href="#discover">Explore the menu</a>
+              <a class="button button-ghost" href="#mybar">Find drinks I can make</a>
+            </div>
+
+            <ul class="hero-points">
+              <li>12 handcrafted cocktail recipes</li>
+              <li>Ingredient matcher for your home bar</li>
+              <li>Step-by-step mixing mode with serving controls</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="feature-strip section reveal">
+          <article class="feature-card large-card">
+            <div class="feature-copy">
+              <p class="eyebrow">HOUSE SELECTION</p>
+              <h2>A menu designed for after hours.</h2>
+              <p>
+                From a bright Pornstar Martini to a smoky Old Fashioned, every recipe is styled like a page
+                from a cocktail editorial.
+              </p>
+            </div>
+            <img src="assets/images/multiple-drinks.jpg" alt="Selection of several cocktails displayed together" />
+          </article>
+
+          <article class="feature-card small-card">
+            <img src="assets/images/three-drinks.jpg" alt="Three cocktails on a bar table" />
+            <div class="feature-copy">
+              <p class="eyebrow">DESIGNED FOR EVERY SCREEN</p>
+              <h3>Luxury look, easy UX.</h3>
+              <p>Responsive layouts, clear navigation and smooth interactions keep the experience simple.</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="discover" class="section section-panel reveal">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">DISCOVER THE MENU</p>
+              <h2>Choose your next pour.</h2>
+            </div>
+            <p class="section-intro">
+              Search by name or ingredient, filter by mood, and save the recipes you want to come back to.
+            </p>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-input" for="search-input">
+              <span>Search</span>
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Try vodka, lime, martini, passionfruit..."
+                autocomplete="off"
+              />
+            </label>
+
+            <div id="category-chips" class="category-chips" aria-label="Recipe category filters"></div>
+          </div>
+
+          <div class="toolbar-footer">
+            <p id="results-count">12 recipes available</p>
+            <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
+          </div>
+
+          <div id="recipe-grid" class="recipe-grid"></div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <h3>No cocktails found</h3>
+            <p>Try a different ingredient, name or category.</p>
+            <button id="empty-reset" class="button button-solid" type="button">Show all recipes</button>
+          </div>
+        </section>
+
+        <section id="mybar" class="section split-layout reveal">
+          <div class="panel ingredient-panel">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">MY BAR</p>
+                <h2>What do you already have?</h2>
+              </div>
+              <button id="clear-pantry" class="text-button" type="button">Clear selections</button>
+            </div>
+            <p class="section-intro">
+              Tap ingredients to build your home bar. The site instantly matches cocktails you can make.
+            </p>
+            <div id="pantry-groups" class="pantry-groups"></div>
+          </div>
+
+          <div class="panel match-panel">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">YOUR MATCHES</p>
+                <h2>What you can mix tonight.</h2>
+              </div>
+            </div>
+            <p id="match-summary" class="section-intro">
+              Select a few ingredients to see your cocktail matches.
+            </p>
+            <div id="match-results" class="match-results"></div>
+          </div>
+        </section>
+
+        <section id="favorites" class="section section-panel reveal">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SAVED RECIPES</p>
+              <h2>Your little black book.</h2>
+            </div>
+            <p class="section-intro">
+              Everything you save stays in your browser so you can revisit your favourite drinks later.
+            </p>
+          </div>
+
+          <div id="favorites-grid" class="recipe-grid"></div>
+
+          <div id="favorites-empty" class="empty-state" hidden>
+            <h3>No saved recipes yet</h3>
+            <p>Use the save button on any cocktail card to keep it here.</p>
+            <a class="button button-solid" href="#discover">Browse cocktails</a>
+          </div>
+        </section>
+      </main>
+
+      <section id="recipe-modal" class="modal" hidden aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
+          <button class="modal-close" type="button" data-close-modal aria-label="Close recipe">×</button>
+          <div id="recipe-modal-content"></div>
+        </div>
+      </section>
+
+      <section id="mix-modal" class="modal" hidden aria-hidden="true">
+        <div class="modal-backdrop" data-close-mix></div>
+        <div class="modal-card mix-modal-card" role="dialog" aria-modal="true" aria-labelledby="mix-title">
+          <button class="modal-close" type="button" data-close-mix aria-label="Close mixing view">×</button>
+          <div id="mix-modal-content"></div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div>
+            <p class="eyebrow">VELVET POUR</p>
+            <h2>Editorial cocktails, made interactive.</h2>
+          </div>
+          <img src="assets/images/bar-scene.jpg" alt="Elegant dark bar interior with warm lighting" />
+        </div>
+        <div class="footer-bottom">
+          <p>Portfolio concept built with HTML, CSS and Vanilla JavaScript.</p>
+          <p>Please enjoy alcohol responsibly.</p>
+        </div>
+      </footer>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+  </body>
+</html>
